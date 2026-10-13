@@ -1,0 +1,162 @@
+/* phong-thuy-lac-viet.css
+   Giao diện tab 1 (mọi luật CSS đều bắt đầu bằng #tab-pt nên không ảnh hưởng tab khác). */
+
+/* ===== TAB 1: PHONG THỦY LẠC VIỆT ===== */
+#tab-pt .header {
+    text-align:center;padding:8px 16px 4px;width:100%;max-width:1300px
+}
+#tab-pt .header h1 {
+    font-size:1.65rem;color:#4a3520;letter-spacing:1px;margin-bottom:2px; text-transform: uppercase;
+}
+#tab-pt .header .subtitle {
+    font-size:0.85rem;color:#7a6a50;margin-bottom:12px
+}
+#tab-pt .controls {
+    display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:24px
+}
+#tab-pt .controls label {
+    font-weight:600;font-size:0.9rem
+}
+#tab-pt .controls input,
+#tab-pt .controls select {
+    padding:6px 12px;border:1px solid var(--border);border-radius:5px;font-size:0.9rem;background:#fff;cursor:pointer;outline:none
+}
+#tab-pt .controls input[type="number"] {
+    width:90px; cursor:text
+}
+#tab-pt .controls button {
+    padding:6px 16px;border:1px solid var(--border);border-radius:5px;background:#fff;font-size:0.9rem;cursor:pointer;transition:all 0.2s;font-weight:600; color:#333
+}
+#tab-pt .controls button:hover {
+    background:#f0e6d3;border-color:#b8860b
+}
+#tab-pt .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+#tab-pt .chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+#tab-pt .tinhban-panel {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#tab-pt .tinhban-title {
+    text-align:center;font-weight:700;font-size:1.1rem;color:#4a3520;margin-bottom:4px;width:100%; text-transform: uppercase;
+}
+#tab-pt .tinhban-title .he {
+    display:block;font-weight:400;font-size:0.8rem;color:#8a7a60;margin-top:2px
+}
+#tab-pt .tinhban-subtitle {
+    text-align:center;font-size:0.9rem;color:#5a4a30;margin-bottom:12px;min-height:1.1em; line-height:1.6;width:100%
+}
+#tab-pt .canvas-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+}
+#tab-pt .canvas-wrap canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+#tab-pt .pt-container {
+    width: 100%; overflow-x: auto; margin-top: 10px; border-radius: 8px; border: 1px solid #d4c5a9;
+}
+#tab-pt .pt-table {
+    width: 100%; border-collapse: collapse; min-width: 800px; text-align: center; background: #fff;
+}
+#tab-pt .pt-table th,
+#tab-pt .pt-table td {
+    border: 1px solid #d4c5a9; padding: 8px;
+}
+#tab-pt .pt-table th {
+    background: #f0e6d3; font-size: 0.85rem; color:#4a3520;
+}
+#tab-pt .pt-table td {
+    font-size: 0.9rem; color:#222; transition: background 0.3s;
+}
+#tab-pt .quai-sym {
+    font-size: 1.6rem; font-weight: bold; display: block; margin-bottom: 2px; line-height:1;
+}
+#tab-pt .highlight-cell {
+    background: #ffe500 !important; font-weight: bold; outline: 2px solid #b8860b; outline-offset: -2px;
+}
+#tab-pt .highlight-row {
+    background: #fffcf0;
+}
+#tab-pt .app-box {
+    margin-top: 16px; padding: 12px 16px; background: #e8f4f8; border-left: 4px solid #2980b9; border-radius: 4px; width: 100%; font-size: 0.95rem; line-height:1.5;
+}
+@media(max-width: 900px){
+#tab-pt .pt-table {
+    min-width: 600px;
+}
+#tab-pt .pt-table th {
+    font-size: 0.75rem; padding: 6px 4px;
+}
+#tab-pt .pt-table td {
+    font-size: 0.8rem; padding: 6px 4px;
+}
+#tab-pt .quai-sym {
+    font-size: 1.3rem;
+}
+}
+@media(max-width: 640px){
+#tab-pt .chart-row {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+#tab-pt .tinhban-panel {
+    max-width: 100%;
+}
+}
+@media(max-width:480px){
+#tab-pt .tinhban-panel {
+    padding:12px 6px;
+}
+#tab-pt .controls {
+    gap: 6px;
+}
+#tab-pt .controls input[type="number"] {
+    width: 65px;
+}
+#tab-pt .app-box {
+    font-size: 0.85rem;
+}
+}
+
+/* --- Bảng Động thổ / Cưới hỏi (tab 1) --- */
+#tab-pt .dt-table{width:100%;min-width:1180px;border-collapse:collapse;table-layout:fixed;background:#fff}
+#tab-pt .dt-table th,#tab-pt .dt-table td{border:1px solid #d4c5a9;padding:6px 7px;font-size:0.74rem;line-height:1.45}
+#tab-pt .dt-table th{background:#f0e6d3;color:#4a3520;text-align:center;vertical-align:middle}
+#tab-pt .dt-table thead th:first-child,#tab-pt .dt-table tbody th{width:88px}
+#tab-pt .dt-table thead small{font-weight:400;color:#7a6a50}
+#tab-pt .dt-table td{vertical-align:top;text-align:left}
+#tab-pt .dt-table td.ok{background:#c8e6c9;color:#1b4d2b}
+#tab-pt .dt-table td.bad{background:#ffcdd2;color:#4a2a2a}
+#tab-pt .dt-table td.na{background:#eee;color:#777;text-align:center;vertical-align:middle}
+#tab-pt .dt-table ul{list-style:none}
+#tab-pt .dt-table li::before{content:'– '}
+#tab-pt .dt-table li.v{color:#b71c1c;font-weight:700}
+#tab-pt .dt-cachtinh{width:100%;margin-top:10px;font-size:0.82rem;line-height:1.55;color:#4a3520}
+#tab-pt .dt-cachtinh summary{cursor:pointer;font-weight:600}
+#tab-pt .dt-cachtinh ul{margin:6px 0 0 18px}
+
+

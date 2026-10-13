@@ -1,0 +1,11 @@
+/* dinh-tam-cong-cu-ve.css
+   Chỉnh khung cho tab 3 (Định Tâm) và tab 4 (Công cụ vẽ). Giao diện bên trong do chính hai module tự cấp. */
+
+#tab-dt .dt-root{width:100%}
+#tab-dt .dt-nav{top:var(--tabbar-h,50px)}
+#tab-dt .dt-card{scroll-margin-top:calc(var(--tabbar-h,50px) + 52px)}
+
+/* Tab 4: Công cụ vẽ chiếm trọn màn hình dưới thanh tab */
+body.on-ve{padding:0}
+#tab-ve{padding-top:0}
+#tab-ve .dv-root{width:100%}

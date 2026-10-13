@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phong Thủy &amp; Huyền Không Phi Tinh - TIEN.TQN</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/phong-thuy-lac-viet.css">
+    <link rel="stylesheet" href="css/huyen-khong.css">
+    <link rel="stylesheet" href="css/dinh-tam-cong-cu-ve.css">
+</head>
+<body>
+
+<div class="tabbar" role="tablist">
+    <button type="button" role="tab" id="btn-pt" class="active" aria-selected="true" aria-controls="tab-pt" onclick="showTab('pt')"><span class="tl">Phong Thủy Lạc Việt</span><span class="ts">Lạc Việt</span></button>
+    <button type="button" role="tab" id="btn-hk" aria-selected="false" aria-controls="tab-hk" onclick="showTab('hk')"><span class="tl">Huyền Không Phi Tinh</span><span class="ts">Huyền Không</span></button>
+    <button type="button" role="tab" id="btn-dt" aria-selected="false" aria-controls="tab-dt" onclick="showTab('dt')"><span class="tl">Định Tâm &amp; Phân Cung</span><span class="ts">Định Tâm</span></button>
+    <button type="button" role="tab" id="btn-ve" aria-selected="false" aria-controls="tab-ve" onclick="showTab('ve')"><span class="tl">Công cụ vẽ</span><span class="ts">Công cụ vẽ</span></button>
+</div>
+
+<section id="tab-pt" class="tab-panel active" role="tabpanel">
+<div class="header">
+    <h1>Phong Thủy Lạc Việt & Cổ Thư</h1>
+    <p class="subtitle">Bát Trạch · Hóa Khí · Bảo Châu · Phiên Tinh Phòng</p>
+    <div class="controls">
+        <label for="pt_yearInput">Năm Sinh:</label>
+        <input type="number" id="pt_yearInput" value="1990" min="1900" max="2100" onkeydown="if(event.key==='Enter') PT.updateData()">
+        
+        <label for="pt_genderSelect">Giới Tính:</label>
+        <select id="pt_genderSelect" onchange="PT.updateData()">
+            <option value="nam">Nam</option>
+            <option value="nu">Nữ</option>
+        </select>
+
+        <label for="pt_degreeInput">Hướng Nhà (°):</label>
+        <input type="number" id="pt_degreeInput" placeholder="VD: 90" min="0" max="360" step="any" onkeydown="if(event.key==='Enter') PT.updateData()">
+        
+        <button onclick="PT.updateData()">🔍 Xem Kết Quả</button>
+    </div>
+</div>
+
+<div class="main-container">
+    <!-- HÀNG 1: Bát Trạch -->
+    <div class="chart-row">
+        <div class="tinhban-panel">
+            <div class="tinhban-title">BÁT TRẠCH LẠC VIỆT<span class="he">Đổi 7:Ly - 9:Đoài | Tốn ⇄ Khôn</span></div>
+            <div class="tinhban-subtitle" id="pt_subLV"></div>
+            <div class="canvas-wrap"><canvas id="pt_canvasLV"></canvas></div>
+        </div>
+        <div class="tinhban-panel">
+            <div class="tinhban-title">BÁT TRẠCH CỔ THƯ<span class="he">Đại Du Niên Truyền Thống</span></div>
+            <div class="tinhban-subtitle" id="pt_subCT"></div>
+            <div class="canvas-wrap"><canvas id="pt_canvasCT"></canvas></div>
+        </div>
+    </div>
+
+    <!-- HÀNG 2: Hóa Khí & Bảo Châu -->
+    <div class="chart-row">
+        <div class="tinhban-panel">
+            <div class="tinhban-title">MÔ HÌNH BÁT CUNG HÓA KHÍ<span class="he">Theo Hậu Thiên Lạc Việt phối Hà Đồ</span></div>
+            <div class="tinhban-subtitle" id="pt_subHK"></div>
+            <div class="canvas-wrap"><canvas id="pt_canvasHK"></canvas></div>
+        </div>
+        <div class="tinhban-panel">
+            <div class="tinhban-title">MÔ HÌNH HUYỆT KHÍ BẢO CHÂU<span class="he">72 Long Xuyên Sơn (Lạc Việt)</span></div>
+            <div class="tinhban-subtitle" id="pt_subBaoChau"></div>
+            <div class="canvas-wrap"><canvas id="pt_canvasBaoChau"></canvas></div>
+        </div>
+    </div>
+
+    <!-- HÀNG 3: Phiên Tinh Phòng -->
+    <div class="tinhban-panel" style="max-width: 100%;">
+        <div class="tinhban-title">PHIÊN TINH PHÒNG THEO PHONG THỦY LẠC VIỆT<span class="he">Lấy mệnh trạch chủ phối hướng, sẽ là phiên tinh phòng đầu tiên, biến hào từ dưới lên</span></div>
+        <div id="pt_ptAppText" class="app-box"></div>
+        <div class="pt-container" id="pt_ptTableContainer"></div>
+    </div>
+
+    <!-- HÀNG 4: Động thổ / Cưới hỏi -->
+    <div class="tinhban-panel" style="max-width: 100%;">
+        <div class="tinhban-title">ĐỘNG THỔ / CƯỚI HỎI<span class="he">12 năm kể từ năm hiện tại · tính theo tuổi mụ của người sinh năm đã nhập</span></div>
+        <div id="pt_dtInfo" class="app-box"></div>
+        <div class="pt-container" id="pt_dtTableContainer"></div>
+        <details class="dt-cachtinh">
+            <summary>Cách tính các tiêu chí</summary>
+            <ul>
+                <li>Tuổi mụ = năm xét − năm sinh + 1.</li>
+                <li><b>Thái Tuế:</b> Địa chi tuổi trùng Địa chi của năm. <b>Xung Thái Tuế:</b> Địa chi tuổi đối xung (cách 6 chi) với Địa chi của năm.</li>
+                <li><b>Tam Tai:</b> tuổi Thân-Tý-Thìn gặp năm Dần-Mão-Thìn; Hợi-Mão-Mùi gặp Tỵ-Ngọ-Mùi; Dần-Ngọ-Tuất gặp Thân-Dậu-Tuất; Tỵ-Dậu-Sửu gặp Hợi-Tý-Sửu.</li>
+                <li><b>Hoang Ốc:</b> tuổi mụ chia 6, dư 1 Nhất Kiết, 2 Nhì Nghi, 3 Tam Địa Sát, 4 Tứ Tấn Tài, 5 Ngũ Thọ Tử, 0 Lục Hoang Ốc. Phạm khi rơi vào Tam Địa Sát, Ngũ Thọ Tử hoặc Lục Hoang Ốc.</li>
+                <li><b>Kim Lâu:</b> tuổi mụ chia 9, dư 1 (Thân), 3 (Thê), 6 (Tử) là phạm. Dư 8 (Kim Lâu Súc, lục súc) vẫn động thổ được.</li>
+                <li><b>Cưới hỏi:</b> chỉ xét với Nam (Tam Tai, Thái Tuế). Nữ mặc định luôn được.</li>
+            </ul>
+        </details>
+    </div>
+</div>
+</section>
+
+<section id="tab-hk" class="tab-panel" role="tabpanel">
+<div class="header">
+    <h1>HUYỀN KHÔNG PHI TINH - TIEN.TQN</h1>
+    <p class="subtitle">Lạc Việt (Hà Đồ) &amp; Cổ Thư (Lạc Thư)</p>
+    <div class="controls">
+        <label for="hk_yearSelect">Năm:</label>
+        <select id="hk_yearSelect"></select>
+        <label for="hk_degreeInput" style="margin-left:5px;">Hướng (°):</label>
+        <input type="number" id="hk_degreeInput" placeholder="VD: 90" min="0" max="360" step="any" onkeydown="if(event.key==='Enter') HK.updateData()">
+        <button onclick="HK.updateData()">🔍 Xem</button>
+        <button class="btn-today" onclick="HK.gotoToday()">📅 Hiện tại</button>
+    </div>
+</div>
+<div class="main-container">
+    <div class="tinhban-panel">
+        <div class="tinhban-title">HUYỀN KHÔNG LẠC VIỆT<span class="he">Phi tinh trên hệ HÀ ĐỒ · Hậu Thiên Lạc Việt</span></div>
+        <div class="tinhban-subtitle" id="hk_subLV"></div>
+        <div class="canvas-wrap"><canvas id="hk_canvasLV"></canvas></div>
+        <div class="legend-row" id="hk_legendLV"></div>
+        <div class="dt-note" id="hk_noteLV"></div>
+    </div>
+    <div class="tinhban-panel">
+        <div class="tinhban-title">HUYỀN KHÔNG CỔ THƯ<span class="he">Phi tinh trên hệ LẠC THƯ · Hậu Thiên Văn Vương</span></div>
+        <div class="tinhban-subtitle" id="hk_subCT"></div>
+        <div class="canvas-wrap"><canvas id="hk_canvasCT"></canvas></div>
+        <div class="legend-row" id="hk_legendCT"></div>
+        <div class="dt-note" id="hk_noteCT"></div>
+    </div>
+</div>
+</section>
+
+<section id="tab-dt" class="tab-panel" role="tabpanel">
+    <div id="tab-dinhtam" style="width:100%"></div>
+</section>
+
+<section id="tab-ve" class="tab-panel" role="tabpanel">
+    <div id="tab-congcuve" style="width:100%"></div>
+</section>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- Thứ tự nạp: module từng tab trước, main.js sau cùng -->
+<script src="js/phong-thuy-lac-viet.js"></script>
+<script src="js/huyen-khong.js"></script>
+<script src="js/dinh-tam-module.js"></script>
+<script src="js/cong-cu-ve-module.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
